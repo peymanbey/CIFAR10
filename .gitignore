@@ -1,0 +1,6 @@
+*.pyc
+*.p
+.ipynb_checkpoints/
+datasets/
+temp.py~
+
