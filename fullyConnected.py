@@ -188,7 +188,11 @@ def build_CNN_batchnorm(in_shape,
                       stride=2)
 
     net = batch_norm(DenseLayer(incoming=net,
-                                num_units=num_hidden,
+                                num_units=num_hidden[0],
+                                nonlinearity=nlin_func))
+
+    net = batch_norm(DenseLayer(incoming=net,
+                                num_units=num_hidden[1],
                                 nonlinearity=nlin_func))
 
     net = batch_norm(DenseLayer(incoming=net,
@@ -234,6 +238,7 @@ def build_2xCNN_batchnorm(in_shape,
     net = batch_norm(DenseLayer(incoming=net,
                                 num_units=num_hidden,
                                 nonlinearity=nlin_func))
+
 
     net = batch_norm(DenseLayer(incoming=net,
                                 num_units=num_out,
