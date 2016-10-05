@@ -152,7 +152,11 @@ def build_CNN(in_shape,
                       stride=2)
 
     net = DenseLayer(incoming=net,
-                     num_units=num_hidden,
+                     num_units=num_hidden[0],
+                     nonlinearity=nlin_func)
+
+    net = DenseLayer(incoming=net,
+                     num_units=num_hidden[1],
                      nonlinearity=nlin_func)
 
     net = DenseLayer(incoming=net,
