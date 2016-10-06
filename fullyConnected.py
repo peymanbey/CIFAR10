@@ -10,7 +10,7 @@ from lasagne.layers import Conv2DLayer, set_all_param_values, batch_norm
 from lasagne.nonlinearities import rectify, softmax
 from lasagne.objectives import categorical_crossentropy
 from lasagne.regularization import regularize_network_params, l1, l2
-from lasagne.updates import rmsprop
+from lasagne.updates import rmsprop, adam
 from lasagne.init import GlorotUniform
 import theano.tensor as T
 from theano import function as Tfunc
@@ -312,7 +312,8 @@ def update_functions(net, data,
     params = get_all_params(net, trainable=True)
 
     # compute updates
-    update = rmsprop(train_loss, params, learning_rate=1e-3)
+    update = rmsprop(train_loss, params, learning_rate=lear_rate)
+    # update = adam(train_loss, params, learning_rate=lear_rate)
 
     # compute validation loss
     test_prediction = get_output(net,
